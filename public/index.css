@@ -33,7 +33,7 @@ body {
 
 .caption {
 	font-family: 'Roboto', sans-serif;
-	font-size: 19px;
+	font-size: 20px;
 	font-weight: 300;
 }
 
@@ -48,7 +48,7 @@ body {
 }
 
 .op-text {
-	color: rgba(255,255,255,0.85);
+	color: rgba(255,255,255,0.90);
 	transition: color 1s;
 }
 
@@ -98,7 +98,7 @@ body {
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 2px solid rgba(225,255,255,0.10);
+  border-bottom: 2px solid rgba(225,255,255,0.25);
 	transition: border-bottom 0.5s;
 	margin-left: 0;
 }
@@ -121,15 +121,15 @@ body {
 	background-color: #f1a35d;
   border: none;
   color: white;
-  padding: 25px;
-	padding-top: 15px;
-	padding-bottom: 15px;
+  padding: 30px;
+	padding-top: 14px;
+	padding-bottom: 14px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 25px 6px;
-	margin-left: 1px;
+	margin-left: 0;
 	border-radius: 6px;
 	cursor: pointer;
 	transition: box-shadow 0.15s;
@@ -147,6 +147,7 @@ body {
 .google {
 	color: gray;
 	background-color: #fff;
+	padding-right: 35px;
 }
 
 ::placeholder { /* Most modern browsers support this now. */

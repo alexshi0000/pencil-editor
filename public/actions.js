@@ -7,6 +7,7 @@ app.controller('controller', function($scope) {
   $scope.email = "";
   $scope.password = "";
   $scope.createUser = function() {
+    console.log("WTF")
     if (passwordRequirements($scope.password)) { //valid
       firebase.auth().createUserWithEmailAndPassword($scope.email, $scope.password)
 	.catch(function(error) {
