@@ -77,7 +77,7 @@
           ></lottie-player>
         </div>
         <p class='footer op-text'>
-          Designed by Alex Shi with Figma, Firebase and AngularJS
+          Designed by Alex Shi with Photoshop, Firebase and AngularJS
         </p>
       </div>
       <div class='right-container'>
@@ -88,40 +88,41 @@
           <div id='form'>
             <p class='label op-text'>
               Your email
-              <span id='valid-email' style='margin-left: 5px; font-size: 16px;color: #f27d49'>
-                *Provide a valid email
+              <span id='valid-email' class='error-text' ng-bind='validEmail'>
               </span>
             </p>
             <input type='text'
                    ng-model="email"
                    size='42'
                    class='form-input op-text'
-                   placeholder='maryjane@somemail.com'></input>
+                   placeholder='maryjane@somemail.com'>
+            </input>
+
             <p class='label op-text'>
               Choose a password
-              <span id='valid-password' style='margin-left: 5px; font-size: 16px;color: #f27d49'>
-                *Requirements not met
+              <span id='valid-password' class='error-text' ng-bind='validPassword'>
               </span>
             </p>
-
             <input type='password'
                    ng-model="password"
                    size='42'
                    class='form-input op-text'
-                   placeholder='At least 8 characters in length'></input>
+                   placeholder='At least 8 characters in length'>
+            </input>
+
             <p class='label op-text'>
               Re-enter Password
-              <span id='valid-password' style='margin-left: 5px; font-size: 16px;color: #f27d49'>
-                *Passwords do not match
+              <span id='valid-password' class='error-text' ng-bind='passwordsMatch'>
               </span>
             </p>
-
             <input type='password'
+                   ng-model="password2"
                    size='42'
                    class='form-input op-text'
-                   placeholder='Passwords must match'></input>
-            <p style='margin-top: 22px; font-weight: 400; font-size: 17px' class='label op-text'>Already have an account? <a style='color: inherit;' href='/login' target='_blank'>Sign in</a></p>
+                   placeholder='Passwords must match'>
+            </input>
 
+            <p style='margin-top: 22px; font-weight: 400; font-size: 17px' class='label op-text'>Already have an account? <a style='color: inherit;' href='/login' target='_blank'>Sign in</a></p>
             <button type='button' class="rounded" ng-click="createUser()">Sign up</button>
             <button type='button' class="rounded google"><img src="../assets/google.png" style="float:left;margin-right:0.8em;width: 20px">Sign in with Google</button>
           </div>

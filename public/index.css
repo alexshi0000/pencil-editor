@@ -150,6 +150,12 @@ body {
 	padding-right: 35px;
 }
 
+.error-text {
+	margin-left: 5px;
+	font-size: 16px;
+	color: #ff8252;
+}
+
 ::placeholder { /* Most modern browsers support this now. */
    color: rgba(255,255,255,0.45);
 }
