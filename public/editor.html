@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- metadata -->
+    <meta charset="utf-8">
+    <title>Pencil</title>
+    <meta name="description" content="Simple Editor">
+    <meta name="author" content="Alex Shi">
+    <!-- angularjs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-app.js"></script>
+    <!-- firebase -->
+    <script defer src="/__/firebase/7.15.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-storage.js"></script>
+    <script defer src="/__/firebase/init.js"></script>
+    <!-- medium -->
+    <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+  </head>
+  <body>
+    <div ng-app="editor" ng-controller="controller">
+      <h2 id='medium-title'
+          class='editable'
+        ng-keyup='update()'
+        ng-mouseleave='update()'
+        ng-click='update()'
+      >Title</h2>
+      <p id='medium-paragraph'
+         class='editable'
+        ng-keyup='update()'
+        ng-mouseleave='update()'
+        ng-click='update()'
+      >Paragraph</p>
+      <button type="button" ng-click="signOutUser()">Sign out</button>
+    </div>
+    <script src="./editor.js"></script>
+  </body>
+</html>
