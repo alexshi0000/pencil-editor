@@ -10,7 +10,9 @@ const errorLabels = {
   'invalid-email'        : '*Provide a valid email',
   'email-already-in-use' : '*Email already in use',
   'invalid-pass'         : '*Requirements not met',
-  'pass-mismatch'        : '*Passwords must match'
+  'pass-mismatch'        : '*Passwords must match',
+  'wrong-password'       : '*Wrong password',
+  'email-not-found'      : '*Email not found',
 }
 
 var app = angular.module('landing', ['firebase'])
@@ -68,11 +70,23 @@ app.controller('controller', function($scope) {
   }
 
   $scope.loginUser = function() {
+    //reset
+    $scope.validEmail = ''
+    $scope.validPassword = ''
+    //auth
     firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password)
       .catch(function(error) {
 	var errorCode = error.code;
 	var errorMessage = error.message;
-	  console.log(`${errorCode} ${errorMessage}`)
+	if (errorCode === 'auth/wrong-password') {
+	  $scope.validPassword = errorLabels['wrong-password']
+	  $scope.$apply()
+	}
+	if (errorCode === 'auth/user-not-found' || errorCode === 'auth/invalid-email') {
+	  $scope.validEmail = errorLabels['email-not-found']
+	  $scope.$apply()
+	}
+	console.log(`${errorCode} ${errorMessage}`)
       });
   }
 

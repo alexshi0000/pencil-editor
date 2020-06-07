@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- metadata -->
+    <meta charset="utf-8">
+    <title>Pencil</title>
+    <meta name="description" content="Simple Editor">
+    <meta name="author" content="Alex Shi">
+    <!-- angularjs -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+    <!-- airbnb -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/7.15.0/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/7.15.0/firebase-auth.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-database.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/7.15.0/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <!-- styles -->
+    <link rel="stylesheet" href="./register.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class='two-column' ng-app="landing" ng-controller="controller">
+      <div class='left-container'>
+        <div class='unselectable'>
+          <h2 class='logo' style='color:#ffffff'>
+            PENCIL
+          </h2>
+          <h2 class='logo' style='color:#f1a35d'>
+            EDITOR
+          </h2>
+        </div>
+        <div class='caption'>
+          <p id='cap1' class='caption-text op-text'>Article templates</p>
+          <p id='cap2' class='caption-text trans-text'>Real-time editing</p>
+          <!--<p id='cap3' class='caption-text trans-text'>Share documents</p>-->
+          <p id='cap3' class='caption-text trans-text'>Medium rich text support</p>
+        </div>
+        <script>
+          //fun little animation for caption
+          function animate() {
+            var id = setInterval(frame, 1200);
+            var cntr = 2;
+            function frame() {
+              document.getElementById(`cap1`).className = "caption-text trans-text"
+              document.getElementById(`cap2`).className = "caption-text trans-text"
+              document.getElementById(`cap3`).className = "caption-text trans-text"
+              //document.getElementById(`cap4`).className = "caption-text trans-text"
+              document.getElementById(`cap${cntr}`).className = "caption-text op-text"
+              cntr = cntr >= 3 ? 1 : cntr + 1
+            }
+          }
+          animate()
+        </script>
+        <div class='lottie'>
+          <lottie-player
+            src="../assets/person-writing.json"
+            background="transparent"
+            speed="1"
+            style="width: 800px; height: 800px;"
+            loop autoplay
+          ></lottie-player>
+        </div>
+        <p class='footer op-text'>
+          Designed by Alex Shi with Photoshop, Firebase and AngularJS
+        </p>
+      </div>
+      <div class='right-container'>
+        <div id='form-container'>
+          <h2 id='title'>
+            Get started
+          </h2>
+          <div id='form'>
+            <p class='label op-text'>
+              Your email
+              <span id='valid-email' class='error-text' ng-bind='validEmail'>
+              </span>
+            </p>
+            <input type='text'
+                   ng-model="email"
+                   size='42'
+                   class='form-input op-text'
+                   placeholder='maryjane@snailmail.com'>
+            </input>
+
+            <p class='label op-text'>
+              Choose a password
+              <span id='valid-password' class='error-text' ng-bind='validPassword'>
+              </span>
+            </p>
+            <input type='password'
+                   ng-model="password"
+                   size='42'
+                   class='form-input op-text'
+                   placeholder='At least 8 characters in length'>
+            </input>
+
+            <p class='label op-text'>
+              Re-enter Password
+              <span id='valid-password' class='error-text' ng-bind='passwordsMatch'>
+              </span>
+            </p>
+            <input type='password'
+                   ng-model="password2"
+                   size='42'
+                   class='form-input op-text'
+                   placeholder='Passwords must match'>
+            </input>
+
+            <p style='margin-top: 22px; font-weight: 400; font-size: 17px' class='label op-text'>Already have an account? <a style='color: inherit;' href='/login.html'>Sign in</a></p>
+            <button type='button' class="rounded" ng-click="createUser()">
+              Sign up
+            </button>
+            <button type='button' class="rounded google" ng-click="googleLogin()">
+              <img src="../assets/google.png" style="float:left;margin-right:0.8em;width: 20px">
+                Sign in with Google
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        try {
+          let config = {
+            apiKey: "AIzaSyDc8HmyZs27ETp2vSr3k0PBP821seiwEY4",
+            authDomain: "pencil-fa7c9.firebaseapp.com",
+            databaseURL: "https://pencil-fa7c9.firebaseio.com",
+            storageBucket: "gs://pencil-fa7c9.appspot.com"
+          };
+          if (!firebase.apps.length)
+            firebase.initializeApp(config)
+        } catch (e) {
+          console.error(e);
+        }
+      });
+    </script>
+    <script src="./actions.js"></script>
+  </body>
+</html>
