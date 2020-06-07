@@ -50,6 +50,7 @@
         <div class='caption'>
           <p id='cap1' class='caption-text op-text'>Article templates</p>
           <p id='cap2' class='caption-text trans-text'>Real-time editing</p>
+          <!--<p id='cap3' class='caption-text trans-text'>Share documents</p>-->
           <p id='cap3' class='caption-text trans-text'>Medium rich text support</p>
         </div>
         <script>
@@ -61,6 +62,7 @@
               document.getElementById(`cap1`).className = "caption-text trans-text"
               document.getElementById(`cap2`).className = "caption-text trans-text"
               document.getElementById(`cap3`).className = "caption-text trans-text"
+              //document.getElementById(`cap4`).className = "caption-text trans-text"
               document.getElementById(`cap${cntr}`).className = "caption-text op-text"
               cntr = cntr >= 3 ? 1 : cntr + 1
             }
@@ -95,7 +97,7 @@
                    ng-model="email"
                    size='42'
                    class='form-input op-text'
-                   placeholder='maryjane@somemail.com'>
+                   placeholder='maryjane@snailmail.com'>
             </input>
 
             <p class='label op-text'>
@@ -123,8 +125,13 @@
             </input>
 
             <p style='margin-top: 22px; font-weight: 400; font-size: 17px' class='label op-text'>Already have an account? <a style='color: inherit;' href='/login' target='_blank'>Sign in</a></p>
-            <button type='button' class="rounded" ng-click="createUser()">Sign up</button>
-            <button type='button' class="rounded google"><img src="../assets/google.png" style="float:left;margin-right:0.8em;width: 20px">Sign in with Google</button>
+            <button type='button' class="rounded" ng-click="createUser()">
+              Sign up
+            </button>
+            <button type='button' class="rounded google" ng-click="googleLogin()">
+              <img src="../assets/google.png" style="float:left;margin-right:0.8em;width: 20px">
+                Sign in with Google
+            </button>
           </div>
         </div>
       </div>

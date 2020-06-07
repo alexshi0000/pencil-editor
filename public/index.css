@@ -122,8 +122,8 @@ body {
   border: none;
   color: white;
   padding: 30px;
-	padding-top: 14px;
-	padding-bottom: 14px;
+	padding-top: 12px;
+	padding-bottom: 12px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -137,17 +137,17 @@ body {
 }
 
 .rounded:hover {
-	-webkit-box-shadow: 3px 3px 23px 0px rgba(0,0,0,0.25);
-	-moz-box-shadow: 3px 3px 23px 0px rgba(0,0,0,0.25);
-	box-shadow: 3px 3px 23px 0px rgba(0,0,0,0.25);
-	transition: box-shadow 0.15s;
+	-webkit-box-shadow: 3px 3px 23px 0px rgba(0,0,0,0.35);
+	-moz-box-shadow: 3px 3px 23px 0px rgba(0,0,0,0.35);
+	box-shadow: 3px 3px 23px 0px rgba(0,0,0,0.35);
+	transition: box-shadow 0.14s;
 	transition-timing-function: ease-in;
 }
 
 .google {
 	color: gray;
 	background-color: #fff;
-	padding-right: 35px;
+	padding-right: 36px;
 }
 
 .error-text {

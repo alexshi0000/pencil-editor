@@ -51,6 +51,22 @@ app.controller('controller', function($scope) {
 	})
     }
   }
+
+  $scope.googleLogin = function() {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+      var token = result.credential.accessToken;
+      var user = result.user;
+      console.log('success')
+    }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+      console.log(`${errorCode} ${errorMessage} ${email} ${credential}`)
+    });
+  }
+
   $scope.loginUser = function() {
     firebase.auth().signInWithEmailAndPassword($scope.email, $scope.password)
       .catch(function(error) {
