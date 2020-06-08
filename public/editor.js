@@ -8,6 +8,7 @@ function setLoading() {
 function unsetLoading() {
   document.getElementById(`loading`).className = 'hidden'
   document.getElementById(`editor`).className = ''
+  anim.play() //play aniamtion
 }
 
 app.controller('controller', function($scope) {
@@ -16,6 +17,7 @@ app.controller('controller', function($scope) {
     buttonLabels: 'fontawesome'
   })
   $scope.editor.subscribe('editableInput', function (event, editable) { //capture dom event
+    $scope.parseLatex() //parse our latex
     $scope.update() //custom update function
   });
 
@@ -46,6 +48,7 @@ app.controller('controller', function($scope) {
 	snapshot.val().quote !== null     &&
 	snapshot.val().paragraph !== null
     ) {
+      //interop with vanilla.js maybe switch this over to angularJS in future
       document.getElementById('medium-title').innerHTML     = snapshot.val().title
       document.getElementById('medium-subtitle').innerHTML  = snapshot.val().subtitle
       document.getElementById('medium-quote').innerHTML     = snapshot.val().quote
@@ -58,14 +61,32 @@ app.controller('controller', function($scope) {
     //1 placeholder - each user only has 1 document currently supported
   }
 
-  $scope.update = function() { //interop angular with vanilla js TODO engineer a medium listener
-    console.log("writing to db ...")
+  $scope.update = function() {
     $scope.writeToDoc({
       title:     document.getElementById('medium-title').innerHTML.trim(),
       subtitle:  document.getElementById('medium-subtitle').innerHTML.trim(),
       quote:     document.getElementById('medium-quote').innerHTML.trim(),
       paragraph: document.getElementById('medium-paragraph').innerHTML.trim()
     })
+  }
+
+  $scope.parseLatex = function() {
+    let paragraph = document.getElementById('medium-paragraph').innerHTML
+    let start = 0, end = 0
+    for (let i = 0; i < paragraph.length; i++) {
+      if (paragraph.charAt(i) === '$' && start === 0) {
+	start = i
+      } else if (paragraph.charAt(i) === '$') {
+	end = i;
+	break
+      }
+    }
+    if (end > start) { //only render if valid enclosings
+      let latexSpan = ` <img src="http://latex.codecogs.com/gif.latex?${paragraph.substring(start+1, end)}" border="0"/> `
+      paragraph = paragraph.substring(0, start) + latexSpan + paragraph.substring(end+1, paragraph.length)
+      document.getElementById('medium-paragraph').innerHTML = paragraph
+      console.log(latexSpan)
+    }
   }
 
   $scope.signOutUser = function() {

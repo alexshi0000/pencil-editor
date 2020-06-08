@@ -30,7 +30,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet">
-
+    <!-- Latex -->
+    <script type="text/javascript" src="http://latex.codecogs.com/latexit.js"></script>
   </head>
   <body>
     <div id='loading' class=''>
@@ -62,14 +63,14 @@
           <div id='propic'>
             <script>
               let container = document.getElementById("propic")
-              let anim = lottie.loadAnimation({
+              var anim = lottie.loadAnimation({
                   container: container,
                   renderer: "svg",
                   loop: true,
-                  autoplay: true,
+                  autoplay: false,
                   path: "../assets/propic-lottie.json"
               });
-              anim.setSpeed(0.8)
+              anim.setSpeed(0.5)
               anim.addEventListener("enterFrame", function (animation) {
                 if (animation.currentTime > 55)
                   anim.pause();
@@ -99,27 +100,31 @@
         </div>
         <div id='medium-paragraph' class='editable'>
           <p class='paragraph trans-text'>
-            Click on any piece of text to start typing.
+            Click on any piece of text to start typing away.
             Highlighting some text will bring up a Medium-style rich text toolbar.
+            LaTeX equations are supported! Simply enclose them with two dollar signs.
           </p>
           <p class='paragraph trans-text'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut laborpsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laborisSe et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-            laborisSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-            laudantium, tot nisi ut aliquip ex ea commodo consequat.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <p class='paragraph trans-text'>
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-            corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-            reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
-            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-            corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
-            reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
-            eum fugiat quo voluptas nulla pariatur?
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+            doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+            veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+            ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque
+            porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
+            adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore
+            et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam,
+            quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut
+            aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit
+            qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum
+            qui dolorem eum fugiat quo voluptas nulla pariatur?
           </p>
         <div>
       </div>
