@@ -41,15 +41,12 @@ app.controller('controller', function($scope) {
 	  // Handle Errors here.
 	  var errorCode = error.code
 	  var errorMessage = error.message
-	  if (errorCode === 'auth/email-already-in-use') {
+	  if (errorCode === 'auth/email-already-in-use')
 	    $scope.validEmail = errorLabels['email-already-in-use']
-	    $scope.$apply()
-	  }
-	  if (errorCode === 'auth/invalid-email') {
+	  if (errorCode === 'auth/invalid-email')
 	    $scope.validEmail = errorLabels['invalid-email']
-	    $scope.$apply()
-	  }
 	  console.log(`${errorCode} ${errorMessage}`)
+	  $scope.$apply()
 	})
     }
   }
@@ -78,15 +75,12 @@ app.controller('controller', function($scope) {
       .catch(function(error) {
 	var errorCode = error.code;
 	var errorMessage = error.message;
-	if (errorCode === 'auth/wrong-password') {
+	if (errorCode === 'auth/wrong-password')
 	  $scope.validPassword = errorLabels['wrong-password']
-	  $scope.$apply()
-	}
-	if (errorCode === 'auth/user-not-found' || errorCode === 'auth/invalid-email') {
+	if (errorCode === 'auth/user-not-found' || errorCode === 'auth/invalid-email')
 	  $scope.validEmail = errorLabels['email-not-found']
-	  $scope.$apply()
-	}
 	console.log(`${errorCode} ${errorMessage}`)
+	$scope.$apply()
       });
   }
 

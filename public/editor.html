@@ -23,13 +23,17 @@
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="./editor.css" type="text/css">
+    <link rel="stylesheet" href="./beagle.css" type="text/css">
     <!-- typography -->
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" rel="stylesheet">
+
   </head>
   <body>
-    <div id='loading' class='hidden'>
+    <div id='loading' class=''>
       <div class='lottie'>
         <lottie-player
           src="../assets/pencil-loading.json"
@@ -40,7 +44,7 @@
         ></lottie-player>
       </div>
     </div>
-    <div id='editor' class='' ng-app="editor" ng-controller="controller">
+    <div id='editor' class='hidden' ng-app="editor" ng-controller="controller">
       <div id='navbar'>
         <div class='unselectable'>
           <h2 class='logo' style='color:#ffffff'>
@@ -52,8 +56,8 @@
         </div>
       </div>
       <div id='document-wrapper'>
-        <h1 class='heading editable'>Article Name</h1>
-        <p class='subheading editable'>Subtitle</p>
+        <h1 id='medium-title' class='heading editable'>Article Name</h1>
+        <p id='medium-subtitle' class='subheading editable'>Subtitle</p>
         <div id='author-container'>
           <div id='propic'>
             <script>
@@ -61,18 +65,63 @@
               let anim = lottie.loadAnimation({
                   container: container,
                   renderer: "svg",
-                  loop: false,
+                  loop: true,
                   autoplay: true,
                   path: "../assets/propic-lottie.json"
               });
-              anim.setSpeed(0.75)
+              anim.setSpeed(0.8)
               anim.addEventListener("enterFrame", function (animation) {
                 if (animation.currentTime > 55)
                   anim.pause();
               });
             </script>
           </div>
+          <div id='author-date'>
+            <p class='label op-text' style='font-size: 18px; font-weight: 500;'>
+              {{email}}
+            </p>
+            <p class='label trans-text' style='font-size: 16px; padding-top: 5px;'>
+              {{date}}
+            </p>
+          </div>
+          <div style='display: flex; justify-content: center; flex-direction: column'>
+            <button type='button' class='rounded unselectable' ng-click='signOutUser()'>
+              Sign out
+            </button>
+          </div>
         </div>
+        <div style='display: flex; flex-direction: row; flex: 1; align-items: stretch'>
+          <div style='margin-top: 35px; height: 80px; width: 14px; background-color: #e9e9ea; border-radius: 10px;'></div>
+          <div id='medium-quote' style='margin-top: 40px; padding-left: 25px;' class='editable'>
+            <p class='italic trans-text'>Insert your favourite quote here. Grab your reader's attention!</p>
+            <p class='italic trans-text'>- Mary Jane</p>
+          </div>
+        </div>
+        <div id='medium-paragraph' class='editable'>
+          <p class='paragraph trans-text'>
+            Click on any piece of text to start typing.
+            Highlighting some text will bring up a Medium-style rich text toolbar.
+          </p>
+          <p class='paragraph trans-text'>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut laborpsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laborisSe et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+            laborisSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            laudantium, tot nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <p class='paragraph trans-text'>
+            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+            corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
+            reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+            laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
+            corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure
+            reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+            eum fugiat quo voluptas nulla pariatur?
+          </p>
+        <div>
       </div>
     </div>
     <script>
