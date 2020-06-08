@@ -12,7 +12,6 @@
     <script defer src="/__/firebase/7.15.0/firebase-app.js"></script>
     <!--- airbnb -->
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.6.10/lottie.min.js"></script>
     <!-- firebase -->
     <script defer src="/__/firebase/7.15.0/firebase-auth.js"></script>
     <script defer src="/__/firebase/7.15.0/firebase-database.js"></script>
@@ -23,10 +22,6 @@
     <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
     <link rel="stylesheet" href="./editor.css" type="text/css">
-    <!-- typography -->
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,500;1,700&family=Roboto:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
   </head>
   <body>
     <div id='loading' class='hidden'>
@@ -42,38 +37,22 @@
     </div>
     <div id='editor' class='' ng-app="editor" ng-controller="controller">
       <div id='navbar'>
-        <div class='unselectable'>
-          <h2 class='logo' style='color:#ffffff'>
-            PENCIL
-          </h2>
-          <h2 class='logo' style='color:rgba(255,255,255,0.5)'>
-            EDITOR
-          </h2>
-        </div>
       </div>
-      <div id='document-wrapper'>
-        <h1 class='heading editable'>Article Name</h1>
-        <p class='subheading editable'>Subtitle</p>
-        <div id='author-container'>
-          <div id='propic'>
-            <script>
-              let container = document.getElementById("propic")
-              let anim = lottie.loadAnimation({
-                  container: container,
-                  renderer: "svg",
-                  loop: false,
-                  autoplay: true,
-                  path: "../assets/propic-lottie.json"
-              });
-              anim.setSpeed(0.75)
-              anim.addEventListener("enterFrame", function (animation) {
-                if (animation.currentTime > 55)
-                  anim.pause();
-              });
-            </script>
-          </div>
-        </div>
-      </div>
+      <h2 id='medium-title'
+          class='editable'
+        ng-keyup='update()'
+        ng-mouseleave='update()'
+        ng-click='update()'
+      >Title</h2>
+      <p id='medium-paragraph'
+         class='editable'
+        ng-keyup='update()'
+        ng-mouseleave='update()'
+        ng-click='update()'
+      >
+        Paragraph
+      </p>
+      <button type="button" ng-click="signOutUser()">Sign out</button>
     </div>
     <script>
       try {
