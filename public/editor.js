@@ -14,7 +14,10 @@ function unsetLoading() {
 app.controller('controller', function($scope) {
   $scope.database = firebase.database()
   $scope.editor = new MediumEditor('.editable', {
-    buttonLabels: 'fontawesome',
+    toolbar: {
+      buttons: ['bold', 'italic', 'underline', 'anchor', 'removeFormat',
+        'justifyLeft', 'justifyCenter', 'justifyRight'],
+    },
     placeholder: false,
   })
   $scope.editor.subscribe('editableInput', function (event, editable) { //capture dom event

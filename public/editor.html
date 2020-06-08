@@ -70,7 +70,7 @@
                   autoplay: false,
                   path: "../assets/propic-lottie.json"
               });
-              anim.setSpeed(0.5)
+              anim.setSpeed(0.8)
               anim.addEventListener("enterFrame", function (animation) {
                 if (animation.currentTime > 55)
                   anim.pause();
@@ -102,7 +102,8 @@
           <p class='paragraph trans-text'>
             Click on any piece of text to start typing away.
             Highlighting some text will bring up a Medium-style rich text toolbar.
-            LaTeX equations are supported! Simply enclose them with two dollar signs.
+            Furthermore, you can remove all formatting by pressing the 'X' in the
+            toolbar. LaTeX equations are supported! Simply enclose them with two dollar signs.
           </p>
           <p class='paragraph trans-text'>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
